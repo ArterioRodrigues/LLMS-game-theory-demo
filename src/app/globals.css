@@ -79,7 +79,9 @@ h3 {
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
   margin-bottom: 1.5rem;
 }
 
@@ -88,7 +90,9 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
-.game-selector, .game-description, .responses-container {
+.game-selector,
+.game-description,
+.responses-container {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -270,7 +274,9 @@ textarea {
   background-color: #1f2937;
   color: white;
   padding: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .navbar-container {

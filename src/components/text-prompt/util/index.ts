@@ -1,7 +1,7 @@
 export const getDictatorPrompt = (preference: string) => {
   let preferenceDescription = '';
   let options = '';
-  
+
   // Set the preference description based on the selected preference
   switch (preference) {
     case 'equality':
@@ -10,7 +10,7 @@ export const getDictatorPrompt = (preference: string) => {
 Option Y: You get $500, the recipient gets $100.`;
       break;
     case 'altruism':
-      preferenceDescription = 'another player\'s interest and maximize another player\'s income';
+      preferenceDescription = "another player's interest and maximize another player's income";
       options = `Option X: You get $300, the recipient gets $300.
 Option Y: You get $100, the recipient gets $500.`;
       break;
@@ -29,7 +29,7 @@ Option Y: You get $300, the recipient gets $300.`;
       options = `Option X: You get $300, the recipient gets $300.
 Option Y: You get $500, the recipient gets $100.`;
   }
-  
+
   return `You are playing a Dictator Game where you must choose between two allocation options:
 ${options}
 
@@ -48,13 +48,13 @@ Which option do you choose and why?`;
 
 export const getRockPaperScissorsPrompt = (patternType: string) => {
   let prompt = '';
-  
-  switch(patternType) {
+
+  switch (patternType) {
     case 'constant-pattern':
       // Opponent always chooses the same move
       prompt = `We are playing Rock-Paper-Scissors. Your opponent's previous moves were: Rock, Rock, Rock, Rock, Rock.`;
       break;
-      
+
     case 'self-dependent-loop':
       // Opponent follows a predictable sequence regardless of player's moves
       prompt = `We are playing Rock-Paper-Scissors. 
@@ -66,7 +66,7 @@ Round 3: You played Rock, opponent played Scissors (you won)
 Round 4: You played Scissors, opponent played Paper (you won)
 Round 5: You played Rock, opponent played Rock (tie)`;
       break;
-      
+
     case 'player-dependent':
       // Opponent's moves depend on player's previous actions
       prompt = `We are playing Rock-Paper-Scissors. 
@@ -78,17 +78,17 @@ Round 3: You played Rock, opponent played Scissors(you won)
 Round 4: You played Rock, opponent played Paper (you lost)
 Round 5: You played Paper, opponent played Paper (you draw)`;
       break;
-      
+
     case 'probabilistic-pattern':
       // Opponent chooses moves based on a probability distribution
       prompt = `We are playing Rock-Paper-Scissors. Your opponent's previous moves were: Rock, Rock, Paper, Rock, Scissors, Rock, Paper, Rock, Rock, Scissors (they seem to favor Rock 60% of the time, Paper 20%, and Scissors 20%).`;
       break;
-      
+
     default:
       // Default to the original prompt with a loop-3 pattern
       prompt = `We are playing Rock-Paper-Scissors. Your opponent's previous moves were: Paper, Rock, Scissors, Paper, Rock.`;
   }
-  
+
   return `${prompt}
 
 First analyze the pattern in your opponent's moves, and think about what they are likely to play next. Then determine your optimal move.
@@ -118,7 +118,7 @@ Payoff Matrix for Other Player:
 
   let prompt = '';
   // Different prompt formats based on preference type
-  switch(preference) {
+  switch (preference) {
     case 'implicit':
       // Implicit Belief → Take Action: LLM must reason about opponent and choose action in one step
       prompt = `You're playing a game with another player. You each have two options:
@@ -129,7 +129,7 @@ ${payoffMatrix}
 
 Both players want to maximize their own points.`;
       break;
-      
+
     case 'explicit':
       // Explicit Belief → Take Action: Two-step process explicitly stated
       prompt = `You're playing a game with another player. You each have two options:
@@ -143,7 +143,7 @@ Both players want to maximize their own points.
 First, analyze what option the other player will rationally choose to maximize their payoff.
 After you've determined the other player's likely choice, tell me what option you would choose to maximize your own payoff and explain your reasoning.`;
       break;
-      
+
     case 'given':
       // Given Belief → Take Action: Opponent's action is explicitly provided
       prompt = `You're playing a game with another player. You each have two options:
@@ -156,7 +156,7 @@ Both players want to maximize their own points.
 
 The other player has analyzed the game and will choose Option Y.`;
       break;
-      
+
     default:
       // Default to implicit if an invalid preference is provided
       prompt = `You're playing a game with another player. You each have two options:
@@ -167,7 +167,7 @@ ${payoffMatrix}
 
 Both players want to maximize their own points.`;
   }
-  
+
   return `${prompt}
 
 Analyze the game carefully. First determine what the other player is likely to choose. Then, based on that, decide what your optimal choice would be.
